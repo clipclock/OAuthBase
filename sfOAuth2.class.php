@@ -71,6 +71,7 @@ class sfOAuth2 extends sfOAuth
     $token->setName($this->getName());
     $token->setStatus(Token::STATUS_ACCESS);
     $token->setOAuthVersion($this->getVersion());
+	$token->setResponseInfo($this->response_info);
 
     unset($params['access_token']);
 

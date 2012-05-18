@@ -122,6 +122,11 @@ abstract class sfOAuth
    */
   protected $config;
 
+	/**
+	 * @var array $responce_info
+	 */
+	protected $response_info;
+
   /**
    *
    * @param string $key
@@ -983,6 +988,8 @@ abstract class sfOAuth
     curl_setopt($ci,CURLOPT_RETURNTRANSFER,true);
 
     $response = curl_exec($ci);
+	$this->response_info = curl_getinfo($ci);
+
     curl_close ($ci);
 
     return $response;
