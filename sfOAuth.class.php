@@ -1099,11 +1099,14 @@ abstract class sfOAuth
     }
 
     curl_setopt($ci, CURLOPT_HEADER, false);
+
     curl_setopt($ci, CURLOPT_URL, $url);
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, FALSE);
 
     $response = curl_exec($ci);
+
 	$this->response_info = curl_getinfo($ci);
 
     curl_close ($ci);
