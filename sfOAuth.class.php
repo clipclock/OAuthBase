@@ -1104,8 +1104,8 @@ abstract class sfOAuth
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ci, CURLOPT_SSL_VERIFYHOST, FALSE);
-	curl_setopt($ci, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-	  curl_setopt($ci, CURLOPT_DNS_CACHE_TIMEOUT, 3600*3);
+//	curl_setopt($ci, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+//	  curl_setopt($ci, CURLOPT_DNS_CACHE_TIMEOUT, 3600*3);
 
     $response = curl_exec($ci);
 
