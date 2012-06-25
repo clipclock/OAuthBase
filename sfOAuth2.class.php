@@ -140,10 +140,16 @@ class sfOAuth2 extends sfOAuth
    */
   public function get($action, $aliases = null, $params = array(), $method = 'GET')
   {
-    $url = $this->prepareCall($action, $aliases, $params, 'GET');
-    $response = $this->call($url, $this->getCallParameters(), null, 'GET');
+	$key = md5(serialize($action));
+	if(!isset($this->cached_queries[$key]))
+	{
+		$url = $this->prepareCall($action, $aliases, $params, 'GET');
+		$response = $this->call($url, $this->getCallParameters(), null, 'GET');
 
-    return $this->formatResult($response);
+		$this->cached_queries[$key] = $this->formatResult($response);
+	}
+
+	return $this->cached_queries[$key];
   }
 
   public function post($action, $aliases = null, $params = array())

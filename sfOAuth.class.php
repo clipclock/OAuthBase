@@ -1080,6 +1080,7 @@ abstract class sfOAuth
     }
     elseif($method == 'GET' && !empty($url_params))
     {
+		curl_setopt($ci, CURLOPT_POST, false);
       $url = $this->appendToUrl($url, $url_params);
     }
 
@@ -1100,6 +1101,7 @@ abstract class sfOAuth
     curl_setopt($ci, CURLOPT_HEADER, false);
     curl_setopt($ci, CURLOPT_URL, $url);
     curl_setopt($ci, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ci, CURLOPT_SSL_VERIFYPEER, false);
 
     $response = curl_exec($ci);
 	$this->response_info = curl_getinfo($ci);
